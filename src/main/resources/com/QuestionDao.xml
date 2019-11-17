@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace这里写要映射的接口路径-->
+<mapper namespace="com.forte.demo.service.QuestionService">
+    <!--resultType这里写最后要封装成的类型-->
+    <insert id="save" parameterType="com.forte.demo.bean.Question">
+        <!--select标签里面写查询的sql语句-->
+        INSERT INTO table_name(title, answer) VALUES (#{title},#{answer})
+    </insert>
+
+    <select id="getQuestionById" resultType="string" parameterType="int">
+        <!--select标签里面写查询的sql语句-->
+        SELECT table_name.title FROM table_name WHERE id=#{id}
+    </select>
+
+    <select id="getAnswerById" resultType="string" parameterType="int">
+        <!--select标签里面写查询的sql语句-->
+        SELECT table_name.answer FROM table_name WHERE id=#{id}
+    </select>
+</mapper>

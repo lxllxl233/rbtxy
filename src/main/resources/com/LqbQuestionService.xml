@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace这里写要映射的接口路径-->
+<mapper namespace="com.forte.demo.service.LqbQuestionService">
+    <!--resultType这里写最后要封装成的类型-->
+    <select id="save" parameterType="com.forte.demo.bean.LqbQuestion">
+        <!--select标签里面写查询的sql语句-->
+        INSERT INTO LqbQuestion(pk, model) VALUES(#{pk},#{model});
+    </select>
+
+    <select id="getByPk" resultType="com.forte.demo.bean.LqbQuestion" parameterType="string">
+        <!--select标签里面写查询的sql语句-->
+        SELECT pk,model FROM LqbQuestion WHERE pk=#{pk}
+    </select>
+</mapper>
