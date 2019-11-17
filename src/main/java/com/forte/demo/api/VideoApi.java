@@ -9,24 +9,8 @@ import org.jsoup.select.Elements;
 
 public class VideoApi {
     public static String getVideo(String name){
-        String rtText = "";
-        String param = HttpclientUtil.getURLEncoderString(name);
-        String url = "http://v.d9y.net/seacher.php?wd="+param;
-
-        String data = HttpclientUtil.doGet(url);
-        //正则表达式清理
-        String apUrl = "http://v.d9y.net/";
-        Document doc = Jsoup.parse(data);
-        Element document = doc.body();
-        Elements select = document.select("a[href][title][class]");
-        int i = 0;
-        for (Element element : select) {
-            rtText+=(element.attr("title")+":"+apUrl+element.attr("href")+"\n");
-            if (++i == 5){
-                break;
-            }
-        }
-        return rtText;
+        //自己想办法
+        return "";
     }
 
     //爬bilibili
