@@ -33,6 +33,6 @@ public class MyRobotRunApplication implements HttpApp {
     }
     @Override
     public void after(CQCodeUtil cqCodeUtil, MsgSender sender) {
-        sender.SENDER.sendPrivateMsg("227666920","成功了");
+        sender.SENDER.sendPrivateMsg("你的qq","成功了");
     }
 }
