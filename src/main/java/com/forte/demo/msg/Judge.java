@@ -44,7 +44,7 @@ public class Judge {
         }else if (qq.equals(mainQQ)) {
             //操作监控
             String[] split = msg.split("#");
-            if (split[0].startsWith("say")) {
+            if (split[1].startsWith("say")) {
                 msg = split[1];
                 boolean isMan = false;
                 if (msg.startsWith("say-少年")){
