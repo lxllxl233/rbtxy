@@ -17,6 +17,7 @@ public class Judge {
     public static String mainQQ;
     public static String rbtQQ;
     public static List<String> groupList = null;
+    public static String accessToken;
     public static Map<String,String> map;
     private static final ResourceBundle resourceBundle;
 
@@ -25,6 +26,7 @@ public class Judge {
         resourceBundle = ResourceBundle.getBundle("config");
         mainQQ = resourceBundle.getString("mainQQ");
         rbtQQ = resourceBundle.getString("rbtQQ");
+        accessToken = resourceBundle.getString("accessToken");
         String lists = resourceBundle.getString("groupList");
         System.out.println(lists);
         groupList = JSON.parseObject(lists, List.class);
@@ -36,7 +38,11 @@ public class Judge {
         System.out.println("配置文件已装载!");
     }
 
-    public static String priJudgeMsg(MsgSender sender,String qq,String msg) {System.out.println(mainQQ);
+    public static String getFace(String location){
+        return BaiduApi.faceDetect(location,accessToken);
+    }
+
+    public static String priJudgeMsg(MsgSender sender,String qq,String msg) {
         if(msg.startsWith("#签到-")) {
             String param = msg.replaceAll("#签到-", "");
             GroupApi.setGroupSign(sender, param);
@@ -53,7 +59,7 @@ public class Judge {
                 }else {
                     msg = msg.replaceAll("say-", "");
                 }
-                sender.SENDER.sendPrivateMsg(split[0].replaceAll("say", ""), BaiduApi.say(msg,map,isMan));
+                sender.SENDER.sendPrivateMsg(split[0], BaiduApi.say(msg,map,isMan));
             } else {
                 sender.SENDER.sendPrivateMsg(split[0], split[1]);
             }
@@ -68,8 +74,6 @@ public class Judge {
                 return priMsg;
             }
         }
-
-
     }
     public static String judgeMsg(String msg, GroupMsg groupMsg, MsgSender sender){
         if(CQCodeUtil.build().isAt(msg,rbtQQ)){
@@ -194,4 +198,17 @@ public class Judge {
         return false;
     }
 
+    //[CQ:image,file=CB275C0885B373691B51087E5B552875.jpg],
+    public static String isImg(String msg){
+        try {
+            msg = msg.substring(msg.indexOf("file=")+5,msg.indexOf("],"));
+            return msg;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    public static String useBaiduApi(String msg,boolean isMan){
+        return BaiduApi.say(msg,map,isMan);
+    }
 }
