@@ -15,9 +15,9 @@ public class TranslateApi {
     }
 
     public static String toChinese(String param){
-        param = HttpclientUtil.getURLEncoderString(param);
+        tkParam = HttpclientUtil.getURLEncoderString(param);
         String url = "https://translate.google.cn/translate_a/single?client=webapp&sl=en&tl=" +
-                "zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=3&tsel=6&kc=2&tk="+tk(param,"422392.71207223")+"&q="+param;
+                "zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=3&tsel=6&kc=2&tk="+tk(tkParam,"422392.71207223")+"&q="+param;
 
         String data = HttpclientUtil.doGet(url);
         String result = data.split(",")[0];
