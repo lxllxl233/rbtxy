@@ -7,7 +7,8 @@
 一定要看resources下的config.properties文件夹
 关于语音合成与人脸识别：需要修改BaiduApi里的输出文件夹，照猫画虎的改就好，在百度AI开放平台注册自己的账号填写config.properties文件
 
-如果你想二次开发，https://www.kancloud.cn/forte-scarlet/simple-coolq-doc/1049734，参考框架作者文档，最好加群给作者暖暖人气>-<
+如果你想二次开发，https://www.kancloud.cn/forte-scarlet/simple-coolq-doc/1049734
+，参考框架作者文档，最好加群给作者暖暖人气>-<
 
 一个可拓展的qq机器人，她的名字叫小茵
 小茵的功能列表:\n注：所有()里的参数均为可选
